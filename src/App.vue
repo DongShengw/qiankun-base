@@ -1,30 +1,27 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <el-menu mode="horizontal">
+      <el-menu-item @click="goto('/')">Home</el-menu-item>
+      <el-menu-item @click="goto('/vue-1')">vue-1</el-menu-item>
+      <el-menu-item @click="goto('/vue-2')">vue-2</el-menu-item>
+      <el-menu-item @click="goto('/html')">html</el-menu-item>
+      <el-menu-item @click="goto('/react')">react</el-menu-item>
+    </el-menu>
+    <router-view></router-view>
+    <div id="vue-1"></div>
+    <div id="vue-2"></div>
+     <div id="html"></div>
+    <div id="react"></div>
 </template>
 
+<script>
+export default {
+  methods:{
+    goto (item) {
+      history.pushState(null, item, item)
+      // this.current = item.name
+    },
+  }
+}
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
